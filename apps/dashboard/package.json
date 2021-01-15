@@ -1,11 +1,14 @@
 {
   "dependencies": {
+    "@babel/preset-react": "^7.12.10",
+    "@blueprintjs/core": "^3.36.0",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@hotwired/turbo": "^7.0.0-beta.3",
     "@rails/ujs": "^6.1.1",
     "@rails/webpacker": "5.2.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "3.4.1",
     "coffee-loader": "^1.0.1",
     "coffeescript": "^1.12.0",
@@ -14,7 +17,10 @@
     "datatables.net-bs": "^1.10.23",
     "jquery": "^3.5.1",
     "loader-utils": "^2.0.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.1"

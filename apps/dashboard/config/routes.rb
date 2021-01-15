@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "dashboard/index"
   get "logout" => "dashboard#logout"
 
+  get "test" => "files#index"
+
   # analytics request appears in the access logs and google analytics
   get "analytics/:type" => proc { [204, {}, ['']] }, as: "analytics"
 
