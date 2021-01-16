@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "dashboard/index"
   get "logout" => "dashboard#logout"
 
-  get "test" => "files#index"
+  get "files/fs/*filepath" => "files#fs", :defaults => { :format => 'html' }, :format => false, :constraints => { :filepath => /.+/ }, as: :files
 
   # analytics request appears in the access logs and google analytics
   get "analytics/:type" => proc { [204, {}, ['']] }, as: "analytics"
