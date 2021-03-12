@@ -14,6 +14,8 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import '../stylesheets/tailwind.css'
+
 import 'jquery-migrate'
 import 'jquery-ujs'
 
