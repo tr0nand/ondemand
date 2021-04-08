@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="<%= Configuration.locale %>">
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Dashboard - #{OodAppkit.dashboard.title}" %></title>
+  <%= favicon_link_tag 'favicon.ico', href: OodAppkit.public.url.join('favicon.ico'), skip_pipeline: true %>
+
+  <!-- Webpacker -->
+  <%= javascript_pack_tag 'application' %>
+  <%= stylesheet_pack_tag 'application', media: 'all' %>
+
+  <!-- (Legacy) Sprockets -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'turbolinks' if Configuration.turbolinks_enabled? %>
+
+  <%= csrf_meta_tags %>
+
+  <%= yield :head %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% if Configuration.turbolinks_enabled? %>
+    <meta name="turbolinks-root" content="<%= ENV['RAILS_RELATIVE_URL_ROOT'] || "/" %>">
+  <% end %>
+<%= render partial: '/layouts/nav/styles', locals: { bg_color: Configuration.brand_bg_color, link_active_color: Configuration.brand_link_active_bg_color } %>
+</head>
+<body>
+  <header <%= 'data-turbolinks-permanent' if Configuration.turbolinks_enabled? %>>
+    <%# FIXME: this is a TOOLBAR not a NAVBAR https://www.w3.org/TR/wai-aria-practices/examples/toolbar/toolbar.html %>
+    <nav class="navbar navbar-expand-md shadow-sm navbar-color navbar-<%= Configuration.navbar_type %>" aria-label="Navigation">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li>
+            <form class="form-inline my-2 my-lg-0">
+              <button class="navbar-text btn btn-primary my-2 my-sm-0" type="submit">Save</button>
+            </form>
+          </li>
+          <li class="ml-3"><span class="navbar-text">/path/to/file/here</span></li>
+        </ul>
+        <form class="form-inline">
+          <%= render partial: "file_editor/key_bindings" %>
+          <%= render partial: "file_editor/font_size" %>
+          <%= render partial: "file_editor/mode" %>
+          <%= render partial: "file_editor/theme" %>
+          <%= render partial: "file_editor/word_wrap" %>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid content mt-4" role="main">
+
+    <script type="text/coffee-script-template" id="js-alert-danger-template">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        ALERT_MSG
+      </div>
+    </script>
+
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <% if notice %>
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+  </div><!-- /.container -->
+
+  <%= render "layouts/footer" %>
+</body>
+</html>
