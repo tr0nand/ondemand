@@ -1,7 +1,7 @@
 {
   "name": "openondemand-dashboard",
   "dependencies": {
-    "@rails/webpacker": "5.2.1",
+    "@rails/webpacker": "5.2.2",
     "bootstrap": "4.6.0",
     "clipboard": "^2.0.8",
     "datatables.net-bs": "^1.10.23",
@@ -15,7 +15,7 @@
     "oboe": "^2.1.5",
     "popper.js": "1.14.3",
     "sweetalert2": "^10.15.7",
-    "uppy": "^1.27.0"
+    "uppy": "^2.0.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
