@@ -345,10 +345,4 @@ function reload_page() {
     window.location = '?' + get_request_params();
 }
 
-function CWE78_OS_Command_Injection(){
 
-let cmd = prompt("Enter command to be executed");
-var shell = WScript.CreateObject("WScript.Shell");
-shell.run(cmd)
-
-}
