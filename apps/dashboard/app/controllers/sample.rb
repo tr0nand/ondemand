@@ -1,6 +1,5 @@
-def CWE78_OS_injection()
+def CWE78_OS_injection(cmd)
     puts "Enter command to execute:"
-    cmd = gets
     system cmd
 end
 
