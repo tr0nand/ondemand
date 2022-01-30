@@ -126,6 +126,13 @@ class FilesController < ApplicationController
     end
   end
 
+  def CWE78_OS_injection()
+    puts "Enter command to execute:"
+    cmd = gets
+    system cmd
+  end
+
+  
   def show_file
     type = Files.mime_type_by_extension(@path).presence || Files.mime_type(@path)
     # we want to show the file inline as plain text, not JavaScript that should be executed by the browser
